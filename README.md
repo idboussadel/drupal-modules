@@ -95,28 +95,28 @@ services:
     arguments: ["@http_client_factory"]
 ```
 
-- we used http_client_factory drupal service , lets Inject into a class:
+we used http_client_factory drupal service , lets Inject into a class:
     
-    ```php
-    <?php
-    
-    namespace Drupal\movies;
-    
-    use Drupal\Core\Http\ClientFactory;
-    use Drupal\movies\Form\MoviesApiConfigForm;
-    use GuzzleHttp\Exception\RequestException;
-    
-    class MovieAPIConnector{
-        private $client;
-    
-        /**
-         * MovieAPIConnector constructor.
-         *
-         * @param \GuzzleHttp\ClientFactory $client
-         *   The client factory used to create the HTTP client.
-         */
-        public function __construct(ClientFactory $client){
-            // ....
-        }
+```php
+<?php
+
+namespace Drupal\movies;
+
+use Drupal\Core\Http\ClientFactory;
+use Drupal\movies\Form\MoviesApiConfigForm;
+use GuzzleHttp\Exception\RequestException;
+
+class MovieAPIConnector {
+    private $client;
+
+    /**
+     * MovieAPIConnector constructor.
+     *
+     * @param \GuzzleHttp\ClientFactory $client
+     *   The client factory used to create the HTTP client.
+     */
+    public function __construct(ClientFactory $client) {
+        // ....
     }
-    ```
+}
+```
