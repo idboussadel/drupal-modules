@@ -16,15 +16,43 @@ I used :
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/b7d57d26-6dda-49f0-93f0-344564c09db7" />
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/d14f9c6e-24bd-4c3d-9f88-43b866b4ec54" />
 
-Day 2 Questions : 
-* How do i control or sort the menus (weight) ?
+## Day 2 Questions : 
+* **How do i control or sort the menus (weight) ?
 
 You can control menu sorting by setting the weight property in the menu link definition (.links.menu.yml).
 Lower weights appear first, higher weights appear later.
 Example:
-```yml
+```yaml
 my_module.custom_link:
   title: 'Custom Page'
   route_name: 'my_module.custom_route'
   weight: 5
 ```
+* **Setting Up Child Menus**
+
+Define child menus in `.links.menu.yml` by specifying the `parent` key.
+
+```yaml
+movies.admin:
+  title: "Movies API Configuration"
+  description: "Configure the Movies API settings"
+  parent: system.admin_config_services
+  route_name: movies.api_config_page
+  weight: 300
+```
+
+### **Retrieve Query String in a Controller**
+
+Use `$request->query->get('key')` inside your controller.
+    
+ ```php
+use Symfony\Component\HttpFoundation\Request;
+    
+ public function view(Request $request){
+   $value = $request->query->get('my_param'); 
+   dump($value);
+ }
+```
+
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/c9b977f6-b3ed-475b-90e5-acf6264515b9" />
+
