@@ -8,13 +8,13 @@ I added a config page for the admin ( Movie and Hello_world ):
 
 ## Results :
 
-I used :
-✅ Services
-✅ Movie API Integration
-✅ Dependency Injection
-✅ Routing
-✅ Templates using Twig
-✅ php and Twig Docs
+I used:
+- ✅ Services
+- ✅ Movie API Integration
+- ✅ Dependency Injection
+- ✅ Routing
+- ✅ Templates using Twig
+- ✅ PHP and Twig Docs
 
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/2b20958c-86e1-4ebd-89d0-9e35aabb64a9" />
 
