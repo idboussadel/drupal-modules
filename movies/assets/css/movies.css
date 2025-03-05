@@ -1,0 +1,77 @@
+.movie-listings {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+}
+
+@media (min-width: 1200px) {
+  .movie-listings {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .movie-listings {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Grid layout for small screens (2 columns) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .movie-listings {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Grid layout for extra small screens (1 column) */
+@media (max-width: 575px) {
+  .movie-listings {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card styling */
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Image styling */
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Text content styling */
+.card h3 {
+  font-size: 1.25rem;
+  margin: 15px 10px 10px;
+  color: #333;
+}
+
+.card p {
+  font-size: 0.9rem;
+  margin: 0 10px 10px;
+  color: #666;
+}
+
+/* Rating styling */
+.card p:last-child {
+  color: #000;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}

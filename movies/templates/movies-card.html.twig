@@ -1,0 +1,9 @@
+<div class="card">
+    <img src="{{ content.image }}" alt="{{ content.title }}" />
+    <h3>{{ content.title }}</h3>
+    <p>{{ content.description | slice(0,100) }}</p>
+    <div class="card-footer">
+        <p>📅 {{ content.release_date }}</p>
+        <p>⭐ {{ content.vote }}</p>
+    </div>
+</div>

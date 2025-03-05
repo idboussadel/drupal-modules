@@ -1,0 +1,4 @@
+movies-styling:
+  css:
+    theme:
+      assets/css/movies.css: {}

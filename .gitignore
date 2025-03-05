@@ -1,0 +1,6 @@
+/vendor/
+/core/
+/modules/
+/recipes/
+/sites/default/files/
+.DS_Store

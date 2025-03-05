@@ -1,0 +1,6 @@
+name: Movies
+description: "A module to manage movies"
+package: CustomModules
+
+type: module
+core_version_requirement: ^10 || ^11
