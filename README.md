@@ -306,3 +306,34 @@ function mymodule_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_
   }
 }
 ```
+---
+
+3. **isFrontPage and is_front**
+`isFrontPage()` is a method provided by Drupal’s `path.matcher` service. It is used to determine whether the current page being requested is the front page (homepage) of the website.
+
+```php
+if (\Drupal::service('path.matcher')->isFrontPage()) {
+  dump('You are on the front page!');
+}else{
+  dump('You are not on the front page!');
+}
+```
+
+Add a variable is_front and pass it to your twig files.
+In Drupal, `hook_preprocess_HOOK()` functions allow you to modify the variables that are sent to Twig templates. Add in the .module :
+
+```php
+function mymodule_preprocess_page(&$variables) {
+  $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+}
+```
+
+add this to your twig template to test:
+
+```twig
+<h3>Is front page: {{ is_front ? 'Yes' : 'No' }}</h3>
+```
+
+
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/8e82b99f-dbb9-4bfd-97ee-156f3b2a32cb" />
+
