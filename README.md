@@ -1,6 +1,6 @@
 # Custom modules :
 I added a config page for the admin ( Movie module ):
-<img width="1440" alt="image" src="https://github.com/user-attachments/assets/8605f91a-64b8-40e5-90de-6db0c6160151" />
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/fddc3a4d-9ce2-4a29-b8fc-11bbd46bae39" />
 <img width="1439" alt="image" src="https://github.com/user-attachments/assets/e8a68bde-257c-414c-a70c-58c12189abd6" />
 
 ## Results :
