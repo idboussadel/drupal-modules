@@ -149,3 +149,35 @@ function movies_theme($existing, $type,$theme,$path){
     ];
 }
 ```
+
+9.  **Adding External JS in a Controller**
+Use `#attached`:
+
+```php
+public function view() {
+
+    return [
+        '#theme' => 'movies-listings',
+        '#content' => [
+            'movies' => $this->createMoviesCards(),
+        ],
+        '#attached' => [
+            'library' => [
+                'movies/movies-styling', // custom CSS library.
+            ],
+            'html_head' => [
+                [
+                    [
+                        '#tag' => 'script', // script tag.
+                        '#attributes' => [
+                            'src' => 'https://unpkg.com/@tailwindcss/browser@4', // CDN URL.
+                            'defer' => 'defer',
+                        ],
+                    ],
+                    'tailwind-js', // Unique key for this script.
+                ],
+            ],
+        ],
+    ];
+}
+```
