@@ -309,6 +309,7 @@ function mymodule_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_
 ---
 
 3. **isFrontPage and is_front**
+
 `isFrontPage()` is a method provided by Drupal’s `path.matcher` service. It is used to determine whether the current page being requested is the front page (homepage) of the website.
 
 ```php
@@ -334,6 +335,32 @@ add this to your twig template to test:
 <h3>Is front page: {{ is_front ? 'Yes' : 'No' }}</h3>
 ```
 
+---
 
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/8e82b99f-dbb9-4bfd-97ee-156f3b2a32cb" />
 
+4. **Adding a `<meta name="viewport">` tag using `hook_page_attachments_alter`**
+
+To add the viewport meta tag:
+
+```php
+function mymodule_page_attachments_alter(array &$attachments) {
+  $attachments['#attached']['html_head'][] = [
+    [
+      '#tag' => 'meta',
+      '#attributes' => [
+        'name' => 'viewport',
+        'content' => 'width=device-width, initial-scale=1, shrink-to-fit=no',
+      ],
+    ],
+    'mymodule_meta_viewport',
+  ];
+}
+
+```
+
+This will inject `<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">` into the page.
+
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/f2268117-f16e-47af-a13b-40f22d29f1b4" />
+
+---
