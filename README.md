@@ -70,10 +70,14 @@ public function view(Request $request){
 
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/c9b977f6-b3ed-475b-90e5-acf6264515b9" />
 
+---
+
 4.  **Guzzle & Logger**
 
 - **Guzzle**: HTTP client for making requests in Drupal.
 - **Logger**: Logs messages via Drupal's logging system
+
+---
 
 5.  **Logging Messages in a Controller**
 
@@ -88,11 +92,15 @@ public function view(Request $request){
   - In the database (`watchdog` table) using `drush ws` .
   - In the admin UI (`/admin/reports/dblog`).
   - In system logs (`syslog` if enabled).
+ 
+---
 
 6.  **Finding Drupal Core Services (YAML File)**
     Located in `core/core.services.yml`.
 
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/3f3d30f7-1476-415c-9857-4542deb287a9" />
+
+---
 
 7.  **Injecting Services in a Custom Service**
 
@@ -131,6 +139,8 @@ class MovieAPIConnector {
 }
 ```
 
+---
+
 8.  **Return a Twig Template in a Controller**
 
 ```php
@@ -160,6 +170,7 @@ function movies_theme($existing, $type,$theme,$path){
     ];
 }
 ```
+---
 
 9.  **Adding External JS in a Controller**
     Use `#attached`:
@@ -192,6 +203,7 @@ public function view() {
     ];
 }
 ```
+---
 
 10. **Translation Search in Admin UI**
     The search keyword is `"Hello, @name!"`
@@ -205,6 +217,7 @@ Use `Drupal.t()`:
 ```js
 Drupal.t("Hello, World!");
 ```
+---
 
 13. **service path.alias_manager**
 
@@ -227,6 +240,8 @@ dump($link);
 ```
 
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/075c1f1e-1361-421c-936c-9a22bae9878f" />
+
+---
 
 14. **send JSON response in a Controller instead of a display :**
 
@@ -258,6 +273,8 @@ class HelloController extends ControllerBase
 You can find all available hooks in the `metatag.api.php` :
 
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/ddfb75b2-f9b3-463c-b494-26a279e73909" />
+
+---
 
 2. **Hook responsible for altering a form**
 
