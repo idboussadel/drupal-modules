@@ -203,6 +203,18 @@ public function view() {
     ];
 }
 ```
+
+Or you can simply include it in the library :
+
+```yaml
+movies-styling:
+  css:
+    theme:
+      assets/css/movies.css: {}
+  js:
+    https://unpkg.com/@tailwindcss/browser@4: { type: external, scope: footer }
+```
+
 ---
 
 10. **Translation Search in Admin UI**
