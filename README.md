@@ -193,7 +193,9 @@ public function view() {
 10.  **Translation Search in Admin UI**
 The search keyword is `"Hello, @name!"`
 
-11.  **Making a String Translatable in JavaScript**
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/24eb5aba-c496-49f2-9b4a-94d26ddc74b8" />
+
+12.  **Making a String Translatable in JavaScript**
 
 Use `Drupal.t()`:
     
@@ -203,9 +205,22 @@ Drupal.t('Hello, World!');
 
 12.  **service path.alias_manager**
 
+Get the alias of a node, given `node/1`, use the service to get the path alias.
+
 ```bash
 ./vendor/bin/drush php
 \Drupal::service('path_alias.manager')->getAliasByPath('/node/1');
 ```
 
 <img width="942" alt="image" src="https://github.com/user-attachments/assets/3e5b0f64-44af-4096-88c1-d8826760aa15" />
+
+Use `Link` and `Url` to get the full URL of one of your routes.
+
+```php
+dump(Url::fromRoute('movies.listings')->toString());
+$url = Url::fromRoute('movies.listings');
+$link = Link::fromTextAndUrl('My Link', $url)->toString();
+dump($link); 
+```
+
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/075c1f1e-1361-421c-936c-9a22bae9878f" />
