@@ -17,7 +17,7 @@ I used :
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/d14f9c6e-24bd-4c3d-9f88-43b866b4ec54" />
 
 ## Day 2 Questions : 
-* **How do i control or sort the menus (weight) ?
+1.  **How do i control or sort the menus (weight) ?**
 
 You can control menu sorting by setting the weight property in the menu link definition (.links.menu.yml).
 Lower weights appear first, higher weights appear later.
@@ -28,7 +28,7 @@ my_module.custom_link:
   route_name: 'my_module.custom_route'
   weight: 5
 ```
-* **Setting Up Child Menus**
+2.  **Setting Up Child Menus**
 
 Define child menus in `.links.menu.yml` by specifying the `parent` key.
 
@@ -41,7 +41,7 @@ movies.admin:
   weight: 300
 ```
 
-### **Retrieve Query String in a Controller**
+3.  **Retrieve Query String in a Controller**
 
 Use `$request->query->get('key')` inside your controller.
     
