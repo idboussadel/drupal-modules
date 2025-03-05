@@ -18,6 +18,7 @@ I used :
 
 Day 2 Questions : 
 * How do i control or sort the menus (weight) ?
+
 You can control menu sorting by setting the weight property in the menu link definition (.links.menu.yml).
 Lower weights appear first, higher weights appear later.
 Example:
