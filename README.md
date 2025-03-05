@@ -37,6 +37,7 @@ my_module.custom_link:
   route_name: "my_module.custom_route"
   weight: 5
 ```
+---
 
 2.  **Setting Up Child Menus**
 
@@ -50,6 +51,7 @@ movies.admin:
   route_name: movies.api_config_page
   weight: 300
 ```
+---
 
 3.  **Retrieve Query String in a Controller**
 
