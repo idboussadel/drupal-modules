@@ -26,7 +26,7 @@ I used :
 
 You can control menu sorting by setting the weight property in the menu link definition (.links.menu.yml).
 Lower weights appear first, higher weights appear later.
-Example:
+
 ```yaml
 my_module.custom_link:
   title: 'Custom Page'
@@ -80,7 +80,7 @@ use Symfony\Component\HttpFoundation\Request;
    - In system logs (`syslog` if enabled).
 
 6.  **Finding Drupal Core Services (YAML File)**
-Located in core/core.services.yml.
+Located in `core/core.services.yml`.
 
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/3f3d30f7-1476-415c-9857-4542deb287a9" />
 
@@ -118,5 +118,34 @@ class MovieAPIConnector {
     public function __construct(ClientFactory $client) {
         // ....
     }
+}
+```
+
+8.  **Return a Twig Template in a Controller**
+
+```php
+return [
+  '#theme' => 'my_template',
+  '#variables' => ['key' => 'value'],
+];
+```
+
+but to enable your themes you should use the `hook_theme()` 
+```php
+<?php
+
+/**
+ * Implements hook_theme().
+ *
+ */
+function movies_theme($existing, $type,$theme,$path){
+    return [
+        'movies-listings' => [
+            'variables'=>['content'=> NULL]
+        ],
+        'movies-card' => [
+            'variables'=>['content'=> NULL]
+        ],
+    ];
 }
 ```
