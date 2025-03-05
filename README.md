@@ -203,7 +203,7 @@ Use `Drupal.t()`:
 Drupal.t('Hello, World!');
 ```
 
-12.  **service path.alias_manager**
+13.  **service path.alias_manager**
 
 Get the alias of a node, given `node/1`, use the service to get the path alias.
 
@@ -224,3 +224,23 @@ dump($link);
 ```
 
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/075c1f1e-1361-421c-936c-9a22bae9878f" />
+
+14. send JSON response in a Controller instead of a display :
+
+you can use `JsonResponse` of `Symfony\Component\HttpFoundation\JsonResponse`.
+
+```php
+<?php
+
+namespace Drupal\hello_world\Controller;
+
+use Drupal\Core\Controller\ControllerBase;
+use Symfony\Component\HttpFoundation\JsonResponse;
+class HelloController extends ControllerBase
+{
+
+    public function hello(){
+        return new JsonResponse(['status' => 'success', 'message' => 'hello world']);
+    }
+}
+```
