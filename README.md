@@ -14,6 +14,7 @@ I used :
 ✅ Dependency Injection
 ✅ Routing
 ✅ Templates using Twig
+✅ php and Twig Docs
 
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/2b20958c-86e1-4ebd-89d0-9e35aabb64a9" />
 
@@ -23,7 +24,7 @@ I used :
 
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/d14f9c6e-24bd-4c3d-9f88-43b866b4ec54" />
 
-## Day 2 Questions :
+## Day 2 - Questions :
 
 1.  **How do i control or sort the menus (weight) ?**
 
@@ -190,20 +191,20 @@ public function view() {
 }
 ```
 
-10.  **Translation Search in Admin UI**
-The search keyword is `"Hello, @name!"`
+10. **Translation Search in Admin UI**
+    The search keyword is `"Hello, @name!"`
 
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/24eb5aba-c496-49f2-9b4a-94d26ddc74b8" />
 
-12.  **Making a String Translatable in JavaScript**
+12. **Making a String Translatable in JavaScript**
 
 Use `Drupal.t()`:
-    
+
 ```js
-Drupal.t('Hello, World!');
+Drupal.t("Hello, World!");
 ```
 
-13.  **service path.alias_manager**
+13. **service path.alias_manager**
 
 Get the alias of a node, given `node/1`, use the service to get the path alias.
 
@@ -220,12 +221,12 @@ Use `Link` and `Url` to get the full URL of one of your routes.
 dump(Url::fromRoute('movies.listings')->toString());
 $url = Url::fromRoute('movies.listings');
 $link = Link::fromTextAndUrl('My Link', $url)->toString();
-dump($link); 
+dump($link);
 ```
 
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/075c1f1e-1361-421c-936c-9a22bae9878f" />
 
-14. send JSON response in a Controller instead of a display :
+14. **send JSON response in a Controller instead of a display :**
 
 you can use `JsonResponse` of `Symfony\Component\HttpFoundation\JsonResponse`.
 
@@ -242,5 +243,47 @@ class HelloController extends ControllerBase
     public function hello(){
         return new JsonResponse(['status' => 'success', 'message' => 'hello world']);
     }
+}
+```
+
+## Day 3 - Questions ( Hooks ) :
+
+1. **What are the hooks provided by the metatag module**
+`hook_metatag_route_entity()` :	Return an entity for a route to render meta tags.
+`hook_metatags_alter()` :	Alter meta tags for non-entity pages.
+`hook_metatags_attachments_alter()`	: Alter meta tags before they are attached to the page.
+
+You can find all available hooks in the `metatag.api.php` :
+
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/ddfb75b2-f9b3-463c-b494-26a279e73909" />
+
+2. **Hook responsible for altering a form**
+
+The hook used to alter a form in Drupal is:
+
+```php
+function hook_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+```
+
+- `$form`: An associative array representing the form structure.
+- `$form_state`: An instance of `FormStateInterface`, which holds the form's current state.
+- `$form_id`: The unique identifier of the form being altered.
+
+
+Extend a form by adding a simple text field 
+
+```php
+/**
+ * Implements hook_form_alter().
+ */
+function mymodule_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id === 'user_register_form') {
+    $form['address'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Address Field'),
+      '#description' => $this->t('Enter the address information.'),
+      '#required' => TRUE,
+    ];
+  }
 }
 ```
