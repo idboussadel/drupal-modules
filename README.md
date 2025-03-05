@@ -61,20 +61,20 @@ use Symfony\Component\HttpFoundation\Request;
 - **Guzzle**: HTTP client for making requests in Drupal.
 - **Logger**: Logs messages via Drupal's logging system
 
-### **Logging Messages in a Controller**
+5.  **Logging Messages in a Controller**
 
 - Inject `logger.factory` service and log messages:
     
     ```php
     $this->logger->info('This is an info log message.');
     ```
-    
-5.  **Where do logs appear?**
+
+  **Where do logs appear?**
    - In the database (`watchdog` table) using `drush ws` .
    - In the admin UI (`/admin/reports/dblog`).
    - In system logs (`syslog` if enabled).
 
-5.  **Finding Drupal Core Services (YAML File)**
+6.  **Finding Drupal Core Services (YAML File)**
 Located in core/core.services.yml.
 
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/3f3d30f7-1476-415c-9857-4542deb287a9" />
