@@ -1,5 +1,31 @@
 # Custom modules :
 
+## Table of Contents
+
+- [Custom modules](#custom-modules)
+  - [Results](#results)
+  - [Block - Plugin](#block---plugin)
+- [Day 2 - Questions](#day-2---questions)
+  1. [How do I control or sort the menus (weight)?](#how-do-i-control-or-sort-the-menus-weight)
+  2. [Setting Up Child Menus](#setting-up-child-menus)
+  3. [Retrieve Query String in a Controller](#retrieve-query-string-in-a-controller)
+  4. [Guzzle & Logger](#guzzle--logger)
+  5. [Logging Messages in a Controller](#logging-messages-in-a-controller)
+  6. [Finding Drupal Core Services (YAML File)](#finding-drupal-core-services-yaml-file)
+  7. [Injecting Services in a Custom Service](#injecting-services-in-a-custom-service)
+  8. [Return a Twig Template in a Controller](#return-a-twig-template-in-a-controller)
+  9. [Adding External JS in a Controller](#adding-external-js-in-a-controller)
+  10. [Translation Search in Admin UI](#translation-search-in-admin-ui)
+  11. [Making a String Translatable in JavaScript](#making-a-string-translatable-in-javascript)
+  12. [service path.alias_manager](#service-pathalias_manager)
+  13. [Send JSON response in a Controller instead of a display](#send-json-response-in-a-controller-instead-of-a-display)
+- [Day 3 - Questions (Hooks)](#day-3---questions-hooks)
+  1. [What are the hooks provided by the metatag module](#what-are-the-hooks-provided-by-the-metatag-module)
+  2. [Hook responsible for altering a form](#hook-responsible-for-altering-a-form)
+  3. [isFrontPage and is_front](#isfrontpage-and-is_front)
+  4. [Adding a `<meta name="viewport">` tag using `hook_page_attachments_alter`](#adding-a-meta-nameviewport-tag-using-hook_page_attachments_alter)
+
+
 I added a config page for the admin ( Movie and Hello_world ):
 
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/fddc3a4d-9ce2-4a29-b8fc-11bbd46bae39" />
