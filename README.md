@@ -391,3 +391,21 @@ function movies_preprocess_menu(&$variables) {
   }
 }
 ```
+
+6.  **Use the hook hook_preprocess_block to alter the system_branding_block block and make site_logo use the following logo `https://static.cdnlogo.com/logos/d/88/drupal-wordmark.svg`**
+
+```php
+/**
+ * Implements hook_preprocess_block().
+ */
+function movies_preprocess_block(&$variables) {
+  if ($variables['plugin_id'] === 'system_branding_block') {
+    $variables['content']['site_logo']['#uri'] = 'https://static.cdnlogo.com/logos/d/88/drupal-wordmark.svg';
+    dump($variables['content']['site_logo']);
+  }
+}
+
+```
+
+## Day 4: Plugins & Forms
+
