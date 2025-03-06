@@ -420,3 +420,25 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
 ```
 
 The `'status'` message type is green in the default Drupal theme.
+
+5.  **How do you group fields together in a form, like the field_group module**
+
+You can use #type => 'details' or 'fieldset' or container.
+
+
+```php
+$form['group'] = [
+    '#type' => 'fieldset',
+    '#title' => $this->t('Grouped Fields'),
+];
+
+$form['group']['field_1'] = [
+    '#type' => 'textfield',
+    '#title' => $this->t('Field 1'),
+];
+
+$form['group']['field_2'] = [
+    '#type' => 'textfield',
+    '#title' => $this->t('Field 2'),
+];
+```
