@@ -376,3 +376,18 @@ This will inject `<meta name="viewport" content="width=device-width, initial-sca
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/f2268117-f16e-47af-a13b-40f22d29f1b4" />
 
 ---
+
+5. **Use the hook hook_preprocess_menu to add a CSS class to all yor menu items `.my-custom-class` **
+
+```php
+/**
+ * Implements hook_preprocess_menu().
+ */
+function movies_preprocess_menu(&$variables) {
+  if (isset($variables['items'])) {
+    foreach ($variables['items'] as &$item) {
+      $item['attributes']->addClass('my-custom-class');
+    }
+  }
+}
+```
