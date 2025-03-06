@@ -341,7 +341,7 @@ function mymodule_preprocess_page(&$variables) {
 }
 ```
 
-add this to your twig template to test:
+add this to your page.html.twig template to test:
 
 ```twig
 <h3>Is front page: {{ is_front ? 'Yes' : 'No' }}</h3>
@@ -409,3 +409,14 @@ function movies_preprocess_block(&$variables) {
 
 ## Day 4: Plugins & Forms
 
+3.  **How do you display a green message after submitting a form?**
+
+Use `\Drupal::messenger()->addMessage()` inside `submitForm()`:
+
+```php
+public function submitForm(array &$form, FormStateInterface $form_state) {
+    \Drupal::messenger()->addMessage($this->t('Your form has been submitted successfully.'), 'status');
+}
+```
+
+The `'status'` message type is green in the default Drupal theme.
