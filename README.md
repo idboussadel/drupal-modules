@@ -712,3 +712,51 @@ The configuration file for eu_cookie_compliance is stored in the config director
 ```
 
 <img width="1119" alt="image" src="https://github.com/user-attachments/assets/804702ad-d9a4-4eea-9d50-4ec2543b6775" />
+
+3. **Why do we need a schema.yml file?**
+
+The schema.yml file defines the structure and data types of configuration for a module. It ensures that Drupal understands how to validate, store, and retrieve configuration data. It also helps with configuration translation and provides metadata for configuration keys.
+
+<img width="1111" alt="image" src="https://github.com/user-attachments/assets/e43e8640-0de3-4231-b61c-ea2a28c5b066" />
+
+4. **How do you load a node?**
+
+You can load a node in Drupal using the following code:
+
+```php
+$node = \Drupal\node\Entity\Node::load($nid);
+```
+
+Where `$nid` is the Node ID (the numeric identifier of the node).
+
+**How do you get its field values?**
+
+Once you've loaded the node, you can access its field values like this:
+
+```php
+$field_value = $node->get('field_name')->value;
+```
+
+Replace `field_name` with the machine name of the field.
+
+For multi-value fields, you can loop through the values:
+
+```php
+foreach ($node->get('field_name')->getValue() as $value) {
+    // Do something with each field value.
+}
+```
+
+**How do you update a field and save the node?**
+
+To update a field value and save the node:
+
+```php
+$node = \Drupal\node\Entity\Node::load($nid);
+$node->set('field_name', 'new_value'); // Update the field value.
+$node->save(); // Save the node.
+```
+
+5. **What is a Constraint?**
+
+A Constraint in Drupal refers to a validation rule that restricts or ensures the integrity of data. For example, field constraints ensure that the data entered into a field is valid based on a set of rules (e.g., length, format). In Drupal, constraints can be applied to fields, form submissions, or entity properties.
