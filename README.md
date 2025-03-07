@@ -1,5 +1,15 @@
-# Custom modules :
 
+# Table of Contents
+- [Block - Plugin](#block---plugin)
+- [Day 2 - Questions](#day-2---questions)
+
+## Block - Plugin
+Content for Block - Plugin...
+
+## Day 2 - Questions
+Content for Day 2 - Questions...
+
+# Custom modules :
 I added a config page for the admin ( Movie and Hello_world ):
 
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/fddc3a4d-9ce2-4a29-b8fc-11bbd46bae39" />
@@ -461,6 +471,30 @@ function my_module_form_validate(&$form, &$form_state) {
   // Validation: Name must be at least 3 characters long.
   if (strlen($name) < 3) {
     $form_state->setErrorByName('name', t('The name must be at least 3 characters long.'));
+  }
+}
+```
+
+2. **How would you render a form inside a block?**
+
+You can render a form inside a block by using `\Drupal::formBuilder()->getForm()` inside the `build()` method of a custom block.
+
+```php
+use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Form\FormInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Provides a block with a custom form.
+ *
+ * @Block(
+ *   id = "custom_form_block",
+ *   admin_label = @Translation("Custom Form Block")
+ * )
+ */
+class CustomFormBlock extends BlockBase {
+  public function build() {
+    return \Drupal::formBuilder()->getForm('Drupal\my_module\Form\MyCustomForm');
   }
 }
 ```
