@@ -839,7 +839,7 @@ To get a node translation in a specific language, for example, French:
 
 ```php
 $node = \Drupal\node\Entity\Node::load($nid);
-$node_french = $node->getTranslation('fr'); // 'fr' for French
+$node_french = $node->getTranslation('fr');
 ```
 
 Now, you can access the French version of the node's fields:
