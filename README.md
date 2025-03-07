@@ -409,7 +409,81 @@ function movies_preprocess_block(&$variables) {
 
 ## Day 4: Plugins & Forms
 
-3.  **How do you display a green message after submitting a form?**
+1.  **Where can you validate you form data ?**
+
+-  **Using `validateForm` in a Custom Form Class**
+
+This is the most common and recommended approach when working with custom form classes.
+
+```php
+	 public function buildForm(array $form, FormStateInterface $form_state) {
+    $form['name'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Name'),
+      '#required' => TRUE,
+    ];
+
+    $form['actions']['submit'] = [
+      '#type' => 'submit',
+      '#value' => $this->t('Submit'),
+    ];
+
+    return $form;
+  }
+
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+    $name = $form_state->getValue('name');
+
+    // Validation: Name must be at least 3 characters long.
+    if (strlen($name) < 3) {
+      $form_state->setErrorByName('name', $this->t('The name must be at least 3 characters long.'));
+    }
+
+  }
+}
+```
+
+-  **Using `#validate` and `hook_form_FORM_ID_alter` Property in the Form Definition**
+
+You can use it in a form that you cannot modify directly (a form defined by another module or core).
+
+```php
+function my_module_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'my_custom_form') {
+    // Add a custom validation function.
+    $form['#validate'][] = 'my_module_form_validate';
+  }
+}
+
+function my_module_form_validate(&$form, &$form_state) {
+  $name = $form_state->getValue('name');
+
+  // Validation: Name must be at least 3 characters long.
+  if (strlen($name) < 3) {
+    $form_state->setErrorByName('name', t('The name must be at least 3 characters long.'));
+  }
+}
+```
+
+3.  **How would you redirect a user after submitting a form?**
+
+You can set a redirect in the `submitForm()` method using `$form_state->setRedirect()`.
+
+Example:
+
+```php
+public function submitForm(array &$form, FormStateInterface $form_state) {
+    $form_state->setRedirect('my_module.custom_page');
+
+```
+
+If you want to redirect to an external URL:
+
+```php
+$form_state->setRedirectUrl(\Drupal\Core\Url::fromUri('https://example.com'));
+```
+
+**How do you display a green message after submitting a form?**
 
 Use `\Drupal::messenger()->addMessage()` inside `submitForm()`:
 
@@ -420,6 +494,30 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
 ```
 
 The `'status'` message type is green in the default Drupal theme.
+
+4.  **Using #access, how can I hide a field for an anonymous user?**
+You can use the #access property to conditionally hide a field for anonymous users.
+
+Example:
+
+```php
+$form['my_field'] = [
+  '#type' => 'textfield',
+  '#title' => t('My Field'),
+  '#access' => !\Drupal::currentUser()->isAnonymous(),
+];
+```
+
+if you want to show it only to authenticated users :
+
+```php
+$form['personal_info']['email'] = [
+      '#type' => 'email',
+      '#title' => $this->t('Email'),
+      '#required' => TRUE,
+      '#access' => \Drupal::currentUser()->isAuthenticated(),
+];
+```
 
 5.  **How do you group fields together in a form, like the field_group module**
 
