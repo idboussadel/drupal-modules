@@ -182,6 +182,8 @@ function movies_theme($existing, $type,$theme,$path){
     Use `#attached`:
 
 ```php
+<?php
+
 public function view() {
 
     return [
@@ -310,6 +312,8 @@ function hook_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_stat
 Extend a form by adding a simple text field 
 
 ```php
+<?php
+
 /**
  * Implements hook_form_alter().
  */
@@ -362,6 +366,8 @@ add this to your page.html.twig template to test:
 To add the viewport meta tag:
 
 ```php
+<?php
+
 function mymodule_page_attachments_alter(array &$attachments) {
   $attachments['#attached']['html_head'][] = [
     [
@@ -426,6 +432,8 @@ function movies_preprocess_block(&$variables) {
 This is the most common and recommended approach when working with custom form classes.
 
 ```php
+<?php
+
 public function buildForm(array $form, FormStateInterface $form_state) {
     $form['name'] = [
       '#type' => 'textfield',
@@ -460,6 +468,8 @@ public function buildForm(array $form, FormStateInterface $form_state) {
 You can use it in a form that you cannot modify directly (a form defined by another module or core).
 
 ```php
+<?php
+
 function my_module_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'my_custom_form') {
     // Add a custom validation function.
@@ -484,6 +494,8 @@ function my_module_form_validate(&$form, &$form_state) {
 You can render a form inside a block by using `\Drupal::formBuilder()->getForm()` inside the `build()` method of a custom block.
 
 ```php
+<?php
+
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -574,6 +586,8 @@ You can use #type => 'details' or 'fieldset' or container.
 
 
 ```php
+<?php
+
 $form['group'] = [
     '#type' => 'fieldset',
     '#title' => $this->t('Grouped Fields'),
@@ -778,6 +792,8 @@ foreach ($node->get('field_name')->getValue() as $value) {
 To update a field value and save the node:
 
 ```php
+<?php
+
 $node = \Drupal\node\Entity\Node::load($nid);
 $node->set('field_name', 'new_value'); // Update the field value.
 $node->save(); // Save the node.
@@ -806,6 +822,8 @@ In entity queries, the `accessCheck` option determines whether or not access con
 Example:
 
 ```php
+<?php
+
 $query = \Drupal::entityQuery('node')
   ->accessCheck(FALSE) // Ignores access control.
   ->condition('type', 'article')
