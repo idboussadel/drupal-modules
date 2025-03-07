@@ -1,7 +1,9 @@
-
 # Table of Contents
 - [Block - Plugin](#block---plugin)
-- [Day 2 - Questions](#day-2---questions)
+- [Day 2 - Questions](#day-2--questions)
+- [Day 3 - Questions (Hooks)](#day-3---questions-hooks)
+- [Day 4: Plugins & Forms](#day-4-plugins--forms)
+- [Day 5: Data types](#day-5-data-types)
 
 # Custom modules :
 I added a config page for the admin ( Movie and Hello_world ):
@@ -279,7 +281,7 @@ class HelloController extends ControllerBase
 }
 ```
 
-## Day 3 - Questions ( Hooks ) :
+## Day 3 - Questions ( Hooks )
 
 1. **What are the hooks provided by the metatag module**
 `hook_metatag_route_entity()` :	Return an entity for a route to render meta tags.
@@ -568,3 +570,6 @@ $form['group']['field_2'] = [
     '#title' => $this->t('Field 2'),
 ];
 ```
+
+## Day 5: Data types
+
