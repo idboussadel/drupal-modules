@@ -426,7 +426,7 @@ function movies_preprocess_block(&$variables) {
 This is the most common and recommended approach when working with custom form classes.
 
 ```php
-	 public function buildForm(array $form, FormStateInterface $form_state) {
+public function buildForm(array $form, FormStateInterface $form_state) {
     $form['name'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Name'),
