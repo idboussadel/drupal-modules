@@ -788,3 +788,44 @@ $node->save(); // Save the node.
 5. **What is a Constraint?**
 
 A Constraint in Drupal refers to a validation rule that restricts or ensures the integrity of data. For example, field constraints ensure that the data entered into a field is valid based on a set of rules (e.g., length, format). In Drupal, constraints can be applied to fields, form submissions, or entity properties.
+
+---
+
+6. **What are View Builders?**
+
+View builders are responsible for rendering entities in Drupal. They determine how entities (like nodes, users, taxonomy terms, etc.) are displayed based on the view mode (e.g., teaser, full, default) and the configuration provided by the entity type.
+
+View builders take the entity object, apply the appropriate view mode, and return a render array that can be displayed on the page.
+
+---
+
+7. **In entity queries, what is the role of `accessCheck`?**
+
+In entity queries, the `accessCheck` option determines whether or not access control (permissions) should be applied to the query. If `accessCheck` is set to `TRUE`, the query will take user permissions into account (i.e., whether the current user can view the content). If set to `FALSE`, the query will ignore access control.
+
+Example:
+
+```php
+$query = \Drupal::entityQuery('node')
+  ->accessCheck(FALSE) // Ignores access control.
+  ->condition('type', 'article')
+  ->execute();
+```
+
+---
+
+
+### 10. **How do you get a node translation? Say in French?**
+
+To get a node translation in a specific language, for example, French:
+
+```php
+$node = \Drupal\node\Entity\Node::load($nid);
+$node_french = $node->getTranslation('fr'); // 'fr' for French
+```
+
+Now, you can access the French version of the node's fields:
+
+```php
+$field_value = $node_french->get('field_name')->value;
+```
