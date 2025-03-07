@@ -694,3 +694,21 @@ class NormalForm extends FormBase{
 
 ## Day 5: Data types
 
+1. **Use drush php to dump eu_cookie_compliance config**
+
+To dump the eu_cookie_compliance config using Drush, you can run the following command in the terminal:
+
+```bash
+drush php-eval 'print_r(\Drupal::config("eu_cookie_compliance.settings")->get());'
+```
+
+<img width="986" alt="image" src="https://github.com/user-attachments/assets/2a94da9b-c719-4573-8793-c3174843c76f" />
+
+2. **Where is the config file for eu_cookie_compliance located?**
+The configuration file for eu_cookie_compliance is stored in the config directory
+
+```bash
+./web/modules/contrib/eu_cookie_compliance/config/install/eu_cookie_compliance.settings.yml
+```
+
+<img width="1119" alt="image" src="https://github.com/user-attachments/assets/804702ad-d9a4-4eea-9d50-4ec2543b6775" />
