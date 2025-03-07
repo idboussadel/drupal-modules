@@ -575,5 +575,119 @@ $form['group']['field_2'] = [
 ];
 ```
 
+**Here is an example of a complex form:**
+
+```php
+<?php
+
+namespace Drupal\hello_world\Form;
+
+use Drupal\Core\Form\FormBase;
+
+class NormalForm extends FormBase{
+    public function getFormId(){
+        return 'normal_form';
+    }
+
+    public function buildForm(array $form, \Drupal\Core\Form\FormStateInterface $form_state) {
+        $form = [];
+      
+        $form['personal_info'] = [
+            '#type' => 'fieldset',
+            '#title' => $this->t('Personal Information'),
+          ];
+        
+          $form['personal_info']['name'] = [
+            '#type' => 'textfield',
+            '#title' => $this->t('Name'),
+            '#required' => TRUE,
+          ];
+        
+          $form['personal_info']['email'] = [
+            '#type' => 'email',
+            '#title' => $this->t('Email'),
+            '#required' => TRUE,
+            '#access' => \Drupal::currentUser()->isAuthenticated(),
+          ];
+
+          $form['additional_info'] = [
+            '#type' => 'details',
+            '#title' => $this->t('Additional Information'),
+            '#open' => TRUE,
+          ];
+        
+          $form['additional_info']['gender'] = [
+            '#type' => 'radios',
+            '#title' => $this->t('Gender'),
+            '#options' => [
+              'male' => $this->t('Male'),
+              'female' => $this->t('Female'),
+            ],
+            '#required' => TRUE,
+            '#default_value' => 'male',
+          ];
+        
+          $form['additional_info']['country'] = [
+            '#type' => 'select',
+            '#title' => $this->t('Country'),
+            '#options' => [
+              'morocco' => $this->t('Morocco'),
+              'usa' => $this->t('USA'),
+              'uk' => $this->t('UK'),
+            ],
+            '#required' => TRUE,
+            '#empty_option' => $this->t('- Select Country -'),
+          ];
+        
+          $form['additional_info']['tele'] = [
+            '#type' => 'textfield',
+            '#title' => $this->t('Tele'),
+            '#required' => FALSE,
+            '#states' => [
+                'visible' => [
+                    ':input[name="country"]' => ['value' => 'morocco'],
+                ],
+                'required' => [
+                    ':input[name="country"]' => ['value' => 'morocco'],
+                ],
+            ],
+        ];
+        
+
+        $form['contact_info']['submit'] = [
+          '#type' => 'submit',
+          '#value' => $this->t('Submit'),
+        ];
+      
+        return $form;
+      }
+
+      public function validateForm(array &$form, \Drupal\Core\Form\FormStateInterface $form_state){
+        $name = $form_state->getValue('name');
+        if (strlen($name) < 3) {
+          $form_state->setErrorByName('name', $this->t('Name must be at least 3 characters long.'));
+        }
+      
+        $email = $form_state->getValue('email');
+        if (!\Drupal::service('email.validator')->isValid($email)) {
+          $form_state->setErrorByName('email', $this->t('Please enter a valid email address.'));
+        }
+      
+        $country = $form_state->getValue('country');
+        $tele = $form_state->getValue('tele');
+        if (!empty($country) && $tele === 'morocco') {
+          $form_state->setErrorByName('tele', $this->t('Tele is required when a country is selected.'));
+        }
+    }
+
+    public function submitForm(array &$form, \Drupal\Core\Form\FormStateInterface $form_state){
+        \Drupal::messenger()->addMessage($this->t('Form submitted successfully!'));
+    }
+
+}
+```
+
+<img width="1069" alt="image" src="https://github.com/user-attachments/assets/fec814b2-3b3b-4463-afc9-959b441b1e72" />
+
 ## Day 5: Data types
 
