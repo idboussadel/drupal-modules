@@ -398,6 +398,8 @@ function movies_preprocess_menu(&$variables) {
 }
 ```
 
+---
+
 6.  **Use the hook hook_preprocess_block to alter the system_branding_block block and make site_logo use the following logo `https://static.cdnlogo.com/logos/d/88/drupal-wordmark.svg`**
 
 ```php
@@ -412,6 +414,8 @@ function movies_preprocess_block(&$variables) {
 }
 
 ```
+
+---
 
 ## Day 4: Plugins & Forms
 
@@ -449,6 +453,8 @@ This is the most common and recommended approach when working with custom form c
 }
 ```
 
+---
+
 -  **Using `#validate` and `hook_form_FORM_ID_alter` Property in the Form Definition**
 
 You can use it in a form that you cannot modify directly (a form defined by another module or core).
@@ -470,6 +476,8 @@ function my_module_form_validate(&$form, &$form_state) {
   }
 }
 ```
+
+---
 
 2. **How would you render a form inside a block?**
 
@@ -497,6 +505,7 @@ class CustomFormBlock extends BlockBase {
 
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/9e5da302-eda4-4d6f-8e09-fbeaf21d8ca1" />
 
+---
 
 3.  **How would you redirect a user after submitting a form?**
 
@@ -516,6 +525,8 @@ If you want to redirect to an external URL:
 $form_state->setRedirectUrl(\Drupal\Core\Url::fromUri('https://example.com'));
 ```
 
+---
+
 **How do you display a green message after submitting a form?**
 
 Use `\Drupal::messenger()->addMessage()` inside `submitForm()`:
@@ -527,6 +538,8 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
 ```
 
 The `'status'` message type is green in the default Drupal theme.
+
+---
 
 4.  **Using #access, how can I hide a field for an anonymous user?**
 
@@ -553,6 +566,8 @@ $form['personal_info']['email'] = [
 ];
 ```
 
+---
+
 5.  **How do you group fields together in a form, like the field_group module**
 
 You can use #type => 'details' or 'fieldset' or container.
@@ -574,6 +589,7 @@ $form['group']['field_2'] = [
     '#title' => $this->t('Field 2'),
 ];
 ```
+
 ---
 
 ## Here is an example of a complex form:
@@ -704,6 +720,8 @@ drush php-eval 'print_r(\Drupal::config("eu_cookie_compliance.settings")->get())
 
 <img width="986" alt="image" src="https://github.com/user-attachments/assets/2a94da9b-c719-4573-8793-c3174843c76f" />
 
+---
+
 2. **Where is the config file for eu_cookie_compliance located?**
 The configuration file for eu_cookie_compliance is stored in the config directory
 
@@ -713,11 +731,15 @@ The configuration file for eu_cookie_compliance is stored in the config director
 
 <img width="1119" alt="image" src="https://github.com/user-attachments/assets/804702ad-d9a4-4eea-9d50-4ec2543b6775" />
 
+---
+
 3. **Why do we need a schema.yml file?**
 
 The schema.yml file defines the structure and data types of configuration for a module. It ensures that Drupal understands how to validate, store, and retrieve configuration data. It also helps with configuration translation and provides metadata for configuration keys.
 
 <img width="1111" alt="image" src="https://github.com/user-attachments/assets/e43e8640-0de3-4231-b61c-ea2a28c5b066" />
+
+---
 
 4. **How do you load a node?**
 
@@ -728,6 +750,8 @@ $node = \Drupal\node\Entity\Node::load($nid);
 ```
 
 Where `$nid` is the Node ID (the numeric identifier of the node).
+
+---
 
 **How do you get its field values?**
 
@@ -747,6 +771,8 @@ foreach ($node->get('field_name')->getValue() as $value) {
 }
 ```
 
+---
+
 **How do you update a field and save the node?**
 
 To update a field value and save the node:
@@ -756,6 +782,8 @@ $node = \Drupal\node\Entity\Node::load($nid);
 $node->set('field_name', 'new_value'); // Update the field value.
 $node->save(); // Save the node.
 ```
+
+---
 
 5. **What is a Constraint?**
 
