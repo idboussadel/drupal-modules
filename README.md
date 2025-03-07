@@ -526,6 +526,7 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
 The `'status'` message type is green in the default Drupal theme.
 
 4.  **Using #access, how can I hide a field for an anonymous user?**
+
 You can use the #access property to conditionally hide a field for anonymous users.
 
 Example:
