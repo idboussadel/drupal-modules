@@ -847,3 +847,10 @@ Now, you can access the French version of the node's fields:
 ```php
 $field_value = $node_french->get('field_name')->value;
 ```
+
+---
+
+##Exercice result :
+
+<img width="1438" alt="image" src="https://github.com/user-attachments/assets/bf0dfc69-b5ae-46ae-b6f7-64d6d103c0af" />
+
