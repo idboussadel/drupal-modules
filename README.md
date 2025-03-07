@@ -495,6 +495,9 @@ class CustomFormBlock extends BlockBase {
 }
 ```
 
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/9e5da302-eda4-4d6f-8e09-fbeaf21d8ca1" />
+
+
 3.  **How would you redirect a user after submitting a form?**
 
 You can set a redirect in the `submitForm()` method using `$form_state->setRedirect()`.
