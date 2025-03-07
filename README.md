@@ -3,12 +3,6 @@
 - [Block - Plugin](#block---plugin)
 - [Day 2 - Questions](#day-2---questions)
 
-## Block - Plugin
-Content for Block - Plugin...
-
-## Day 2 - Questions
-Content for Day 2 - Questions...
-
 # Custom modules :
 I added a config page for the admin ( Movie and Hello_world ):
 
