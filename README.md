@@ -574,8 +574,9 @@ $form['group']['field_2'] = [
     '#title' => $this->t('Field 2'),
 ];
 ```
+---
 
-**Here is an example of a complex form:**
+## Here is an example of a complex form:
 
 ```php
 <?php
@@ -688,6 +689,8 @@ class NormalForm extends FormBase{
 ```
 
 <img width="1069" alt="image" src="https://github.com/user-attachments/assets/fec814b2-3b3b-4463-afc9-959b441b1e72" />
+
+---
 
 ## Day 5: Data types
 
